@@ -6,9 +6,15 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
+const os = require('os');
+const express = require('express');
+const http = require('http');
 
-//keep global copy of window object so it isn't garbage collected
-let win;
+let mainWin; //reference kept for garbage collection
+let server;
+let PORT = 5000;
+
+var host_url;
 
 function createWindow () {
     win = new BrowserWindow({width: 800, height: 600});
@@ -30,7 +36,23 @@ function createWindow () {
 }
 
 //This is called when Electron has finished initialization
-app.on('ready', createWindow);
+app.on('ready', () => {
+    setHostURL();
+    createWindow();
+
+    server = express();
+    server.use(express.static("static"));
+    server.use(express.json());
+    server.get("/", function(req, res) {
+        res.render('client');
+    });
+    //start server
+    let httpServer = http.createServer(server);
+    httpServer.listen(PORT, function() {
+                // Print out our actual IP Address so they know what to tell their friends :D
+                console.log("Listening on " + host_url);
+            });
+    });
 
 //Quit when all windows are closed
 app.on('window-all-closed', () => {
@@ -47,4 +69,23 @@ app.on('activate', () => {
     }
 });
 
-//Now do whatever this app should do! Or require them here
+function setHostURL () {
+    var ifaces = os.networkInterfaces();
+    Object.keys(ifaces).forEach(function (ifname) {
+        if (host_url) {
+            return true;
+        }
+        ifaces[ifname].forEach(function (iface) {
+            if (host_url) {
+                return true;
+            }
+            if ('IPv4' !== iface.family || iface.internal !== false) {
+                // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+                return;
+            }
+            if (!host_url) {
+                host_url = "http://" + iface.address + ":" + PORT + "/";
+            }
+        });
+    });
+}
