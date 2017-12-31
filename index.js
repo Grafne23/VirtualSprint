@@ -61,6 +61,7 @@ io.on('connection', function(socket){
     socket.on('QF', function(num) {
         console.log('Question finished: ' + num);
         io.emit('QF', num);
+        io.emit('scores', users);
         
         console.log(users);
         for(user in users) {
@@ -73,8 +74,6 @@ io.on('connection', function(socket){
             users[user].choice = 'X';
         }
         console.log(users);
-
-        io.emit('scores', users);
     });
 });
 
