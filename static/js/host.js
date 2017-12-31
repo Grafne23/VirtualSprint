@@ -33,27 +33,41 @@ $('#Q1').click(function(){
     socket.emit('Q', "1");
     $('#QImage').attr("src", "images/Q1.jpg");
     $('#QImage').show();
-    startCounter(10);
+    startCounter(10, questionOver);
 });
+
+$('#Q2').click(function(){
+    console.log("Q2 pressed");
+    socket.emit('Q', "2");
+    $('#QImage').attr("src", "images/Q2_B.PNG");
+    $('#QImage').show();
+    startCounter(15, showLines);
+});
+
+showLines = function() {
+    $('#QImage').attr("src", "images/Q2_L.PNG");
+    startCounter(10, questionOver);
+}
 
 questionOver = function() {
     $('#QImage').hide();
     socket.emit('QF', "1");
-    $('#QImage').attr("src", "images/Q1_A.jpg");
+    $('#QImage').attr("src", "images/Q2_A.PNG");
     $('#QImage').show();
 }
 
-startCounter = function(t) {
+startCounter = function(t, callback) {
     if(!counterOn) {
         counterOn = true;
         time = t;
+        $('#counterText').text(time);
         var timer = setInterval(function(){
             time--;
-            $('#counter').text(time);
+            $('#counterText').text(time);
             if(time == 0) { 
                 clearInterval(timer);
-                questionOver();
                 counterOn = false;
+                callback();
             }
         }, 1000);
     }

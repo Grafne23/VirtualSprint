@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Virtual Sprint! </title>
-        <link rel="stylesheet" href="css/host.css">
-    </head>
-    <body>
-        <div class="pageContainer">
-            <header id="header">
-                <div id="logo">
-                    <img src="images/GVOC_LOGO.png" />
+<head>
+    <title> Virtual Sprint! </title>
+    <link rel="stylesheet" href="css/host.css">
+</head>
+<body>
+    <div class="pageContainer">
+        <header id="header">
+            <div id="logo">
+                <img src="images/GVOC_LOGO.png" />
+            </div>
+            <div id="welcomeBanner">
+                <h1> Sprint Camp Virtual Sprint! </h1>
+                <p id='slogan'>It's not a resting camp</p>
+            </div>
+            <div id="logo">
+                <img src="images/GVOC_LOGO.png" />
+            </div>
+        </header>
+        <main id='mainContent'>
+            <div id='top'>
+                <div id='playersList'>
+                    <p id='teamsHeader'>Active Teams</p>
                 </div>
-                <div id="welcomeBanner">
-                    <h1> Sprint Camp Virtual Sprint! </h1>
-                    <p id='slogan'>It's not a resting camp</p>
+                <div id='questionSpace'>
+                    <img id='QImage'/>
+                    <p id='counter'><span id='counterText'>00</span></p>
                 </div>
-                <div id="logo">
-                        <img src="images/GVOC_LOGO.png" />
+                <div id='resultsSpace'>
                 </div>
-            </header>
-            <main id='mainContent'>
-                <div>
-                    <div id='playersList'>
-                        <p id='teamsHeader'>Active Teams</p>
-                    </div>
-                    <div id='questionSpace'>
-                        <p>This is where the question will show?</p>
-                        <p id='counter'>30</p>
-                        <img id='QImage'/>
-                    </div>
-                    <div id='resultsSpace'>
-                    </div>
-                    <div id='buttonSpace'>
-                        <h4>Show Question</h4>
-                        <button id="Q1">1</button>
-                        <button id="Q2">2</button>
-                        <button id="Q3">3</button>
-                    </div>
+            </div>
+            <div id='bottom'>
+                <div id='buttonSpace'>
+                    <h4>Show Question</h4>
+                    <button id="Q1">1</button>
+                    <button id="Q2">2</button>
+                    <button id="Q3">3</button>
                 </div>
-            </main>
-            <footer id="footer">
-                <h4>What Fun!</h4>
-            </footer>
-        </div>
-
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-
-        <script src="js/host.js"></script>
-    </body>
+            </div>
+        </main>
+        <footer id="footer">
+            <h4>What Fun!</h4>
+        </footer>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    
+    <script src="js/host.js"></script>
+</body>
 </html>

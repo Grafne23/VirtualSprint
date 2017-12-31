@@ -1,14 +1,10 @@
-strong {
-    color: red;
-}
-
 #header {
-    margin: 10px;
+    margin: 0px;
     display: flex;
 }
 
 .pageContainer {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -24,7 +20,7 @@ strong {
 }
 
 #logo img {
-    padding: 10px;
+    padding: 10px 0px;
     width: 60px;
     height: 80px;
 }
@@ -41,14 +37,28 @@ strong {
     
     color: black;
     text-align: center;
-    width: 700px;
+    width: 900px;
     height: 100px;
     background: green;
 }
 
 #mainContent {
+    margin: 0px;
+    width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#top {
+    margin: 0px;
+    width: 1200px;
+    height: auto;
+    display: flex;
+}
+#bottom {
     margin: 10px;
-    width: 1000px;
+    width: 1200px;
     height: auto;
     display: flex;
 }
@@ -58,36 +68,50 @@ strong {
     background: lightgreen;
     margin: 0;
     padding: 0;
-    flex-basis: 30%;
+    flex-basis: 15%;
 }
 #teamsHeader {
     display: flex;
-    padding: 0px 5px;
-    margin: 0px 75px;
-    width: 150px;
+    text-decoration: underline;
+    padding: 2px 5px;
+    margin: 0px 25px;
+    width: auto;
     height: 20px;
 }
 .teamName {
     display: flex;
     padding: 0px 5px;
     margin: 10px 0;
-    width: 150px;
+    width: auto;
     height: 30px;
 }
 #questionSpace {
     display: flex;
-    flex-basis: 70%;
+    flex-basis: 85%;
     flex-wrap: wrap;
     justify-content: space-around;
     background: lightgrey;
 }
+#QImage {
+    width: 900px;
+    height: 900px;
+}
 #counter {
+    position: relative;
+    bottom: 905px;
+    left: 865px;
+    width: 100%;
+}
+#counterText {
     background: lightcoral;
-    padding: 0px 5px;
-    margin: 10px 0;
-    border-radius: 5;
-    width: 30px;
-    height: 30px;
+    border-radius: 45px;
+    border: 2px solid black;
+    color: white;
+    font: bold 48px/90px Helvetica, Sans-Serif; 
+    letter-spacing: 1px;  
+    width: 100px;
+    height: 100px;
+    padding: 10px;
 }
 
 #resultsSpace div {
