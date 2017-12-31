@@ -12,26 +12,28 @@ const http = require('http');
 
 let mainWin; //reference kept for garbage collection
 let server;
+var httpServer;
 let PORT = 5000;
+var io;
 
 var host_url;
 
 function createWindow () {
-    win = new BrowserWindow({width: 800, height: 600});
+    mainWin = new BrowserWindow({width: 800, height: 600});
 
     //load the index.html of the app
-    win.loadURL(url.format({
+    mainWin.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true
     }));
 
     //open DevTools
-    win.webContents.openDevTools();
+    mainWin.webContents.openDevTools();
 
     //Emitted when the window is closed
-    win.on('closed', () => {
-        win = null;
+    mainWin.on('closed', () => {
+        mainWin = null;
     });
 }
 
@@ -47,12 +49,27 @@ app.on('ready', () => {
         res.render('client');
     });
     //start server
-    let httpServer = http.createServer(server);
+    httpServer = http.createServer(server);
     httpServer.listen(PORT, function() {
-                // Print out our actual IP Address so they know what to tell their friends :D
-                console.log("Listening on " + host_url);
-            });
+        // Print out our actual IP Address so they know what to tell their friends :D
+        console.log("Listening on " + host_url);
     });
+
+    io = require('socket.io')(httpServer);
+    io.on('connection', function(socket){
+        console.log('a user connected');
+        socket.on('disconnect', function(){
+          console.log('user disconnected');
+        });
+        socket.on('chat message', function(msg) {
+            console.log('message: ' + msg);
+        });
+      });
+
+   /* mainWin.document.getElementById("showQ").addEventListener('click', function() {
+        console.log("pressed");
+    });*/
+});
 
 //Quit when all windows are closed
 app.on('window-all-closed', () => {
@@ -64,7 +81,7 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
     //macOS, re-create a window in the app when dock is clicked, if no windows open
-    if(win === null) {
+    if(mainWin === null) {
         createWindow();
     }
 });
