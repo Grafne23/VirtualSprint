@@ -81,6 +81,23 @@ strong {
     justify-content: space-around;
     background: lightgrey;
 }
+#counter {
+    background: lightcoral;
+    padding: 0px 5px;
+    margin: 10px 0;
+    border-radius: 5;
+    width: 30px;
+    height: 30px;
+}
+
+#resultsSpace div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+}
 
 #footer {
     color: black;

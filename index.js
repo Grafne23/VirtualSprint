@@ -4,6 +4,12 @@ const path    = require("path");
 let PORT = 5000;
 
 var app = express();
+var numUsers = 0;
+
+//Like a simple DB
+//{user, {choice, score}};
+var users = new Object();
+var correctAnswers = ['C', 'B', 'A', 'D', 'A', 'C'];
 
 //app.set("port", PORT);
 app.use(express.static("static"));
@@ -28,15 +34,47 @@ io = require('socket.io')(httpServer);
 
 io.on('connection', function(socket){
     console.log('a user connected');
+    var addedUser = false;
     socket.on('disconnect', function(){
         console.log('user disconnected');
     });
-    socket.on('chat message', function(msg) {
-        console.log('message: ' + msg);
+    socket.on('choice', function(msg) {
+        console.log(socket.username + " chose " + msg);
+        users[socket.username].choice = msg;
+        console.log(users);
     });
-    socket.on('team name', function(msg) {
-        console.log('name selected: ' + msg);
-        io.emit('team name', msg);
+    socket.on('team name', function(name) {
+        if (addedUser) return;
+        
+        // we store the username in the socket session for this client
+        socket.username = name;
+        users[name] = {choice:'X', score:0};
+        ++numUsers;
+        addedUser = true;
+        console.log('name selected: ' + name);
+        io.emit('team name', name);
+    });
+    socket.on('Q', function(num) {
+        console.log('Question selected: ' + num);
+        io.emit('Q', num);
+    });
+    socket.on('QF', function(num) {
+        console.log('Question finished: ' + num);
+        io.emit('QF', num);
+        
+        console.log(users);
+        for(user in users) {
+            console.log(correctAnswers[num - 1]);
+            console.log(users[user].choice);
+            if(users[user].choice == correctAnswers[num - 1]) {
+                console.log(user + " got it correct!");
+                users[user].score++;
+            }
+            users[user].choice = 'X';
+        }
+        console.log(users);
+
+        io.emit('scores', users);
     });
 });
 
