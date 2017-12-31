@@ -34,6 +34,10 @@ io.on('connection', function(socket){
     socket.on('chat message', function(msg) {
         console.log('message: ' + msg);
     });
+    socket.on('team name', function(msg) {
+        console.log('name selected: ' + msg);
+        io.emit('team name', msg);
+    });
 });
 
 /*

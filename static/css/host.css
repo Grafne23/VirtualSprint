@@ -1,41 +1,91 @@
 strong {
     color: red;
-  }
-  #header {
+}
+
+#header {
     margin: 10px;
     display: flex;
-  }
-  #logo {
+}
+
+.pageContainer {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#logo {
     display: inline-block;
     vertical-align: middle;
-  
+    
     color: black;
     text-align: center;
     width: 150px;
     height: 100px;
     background: green;
-  }
-  
-  #logo img {
+}
+
+#logo img {
     padding: 10px;
     width: 60px;
     height: 80px;
-  }
+}
 
-  #slogan {
+#slogan {
     font-style: italic;
     position: relative;
     top: -20px;
-  }
+}
 
-  #welcomeBanner {
+#welcomeBanner {
     display: inline-block;
     vertical-align: middle;
-  
+    
     color: black;
     text-align: center;
     width: 700px;
     height: 100px;
     background: green;
-  }
-  
+}
+
+#mainContent {
+    margin: 10px;
+    width: 1000px;
+    height: auto;
+    display: flex;
+}
+
+#playersList {
+    list-style-type: none;
+    background: lightgreen;
+    margin: 0;
+    padding: 0;
+    flex-basis: 30%;
+}
+#teamsHeader {
+    display: flex;
+    padding: 0px 5px;
+    margin: 0px 75px;
+    width: 150px;
+    height: 20px;
+}
+.teamName {
+    display: flex;
+    padding: 0px 5px;
+    margin: 10px 0;
+    width: 150px;
+    height: 30px;
+}
+#questionSpace {
+    display: flex;
+    flex-basis: 70%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: lightgrey;
+}
+
+#footer {
+    color: black;
+    text-align: center;
+    width: 1000px;
+    height: 50px;
+    background: green;
+}

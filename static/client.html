@@ -2,14 +2,22 @@
 <html>
     <head>
         <title> Hello There! </title>
+        <link rel="stylesheet" href="css/client.css">
     </head>
     <body>
-        <h1> Hello There! </h1>
-        <p>Thanks for hosting me!</p>
-        <button id='A'>A</button>
-        <button id='B'>B</button>
-        <button id='C'>C</button>
-        <button id='D'>D</button>
+        <h1 id='title'> Hello there! </h1>
+        <div id='nameInput'>
+            <p>Please enter a team name:</p>
+            <input id="name" autocomplete="off" />
+            <button id='submitName'>OK!</button>
+        </div>
+        <div id='multipleChoiceContainer'>
+            <button id='A'>A</button>
+            <button id='B'>B</button>
+            <button id='C'>C</button>
+            <button id='D'>D</button>
+        </div>
+
         <script src="/socket.io/socket.io.js"></script>
         <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
         <script src="js/client.js"></script>

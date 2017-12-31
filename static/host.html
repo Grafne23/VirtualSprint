@@ -5,29 +5,42 @@
         <link rel="stylesheet" href="css/host.css">
     </head>
     <body>
-        <header id="header">
-            <div id="logo">
-                <img src="images/GVOC_LOGO.png" />
-            </div>
-            <div id="welcomeBanner">
-                <h1> Sprint Camp Virtual Sprint! </h1>
-                <p id='slogan'>It's not a resting camp</p>
-            </div>
-            <div id="logo">
+        <div class="pageContainer">
+            <header id="header">
+                <div id="logo">
                     <img src="images/GVOC_LOGO.png" />
-            </div>
-        </header>
-        <main>
-            <div>
-                <div id='playersList'></div>
-                <div id='questionSpace'></div>
-                <div id='buttonSpace'>
-                    <h4>Show Question</h4>
-                    <button id="Q1">1</button>
-                    <button id="Q2">2</button>
-                    <button id="Q3">3</button>
                 </div>
-            </div>
-        </main>
+                <div id="welcomeBanner">
+                    <h1> Sprint Camp Virtual Sprint! </h1>
+                    <p id='slogan'>It's not a resting camp</p>
+                </div>
+                <div id="logo">
+                        <img src="images/GVOC_LOGO.png" />
+                </div>
+            </header>
+            <main id='mainContent'>
+                <div>
+                    <div id='playersList'>
+                        <p id='teamsHeader'>Active Teams</p>
+                    </div>
+                    <div id='questionSpace'>
+                        <p>This is where the question will show?</p>
+                    </div>
+                    <div id='buttonSpace'>
+                        <h4>Show Question</h4>
+                        <button id="Q1">1</button>
+                        <button id="Q2">2</button>
+                        <button id="Q3">3</button>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer">
+                <h4>What Fun!</h4>
+            </footer>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="js/host.js"></script>
     </body>
 </html>
