@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const path    = require("path");
 let PORT = 5000;
 
 var app = express();
@@ -16,11 +17,11 @@ httpServer.listen(PORT, function() {
 });
 
 app.get("/", function(req, res) {
-    res.sendFile('static/client.html');
+    res.sendFile(path.join(__dirname+'/static/client.html'));
 });
 
 app.get("/host/", function(req, res) {
-    res.sendFile('static/host.html');
+    res.sendFile(path.join(__dirname+'/static/host.html'));
 });
 
 io = require('socket.io')(httpServer);

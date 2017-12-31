@@ -1,0 +1,41 @@
+strong {
+    color: red;
+  }
+  #header {
+    margin: 10px;
+    display: flex;
+  }
+  #logo {
+    display: inline-block;
+    vertical-align: middle;
+  
+    color: black;
+    text-align: center;
+    width: 150px;
+    height: 100px;
+    background: green;
+  }
+  
+  #logo img {
+    padding: 10px;
+    width: 60px;
+    height: 80px;
+  }
+
+  #slogan {
+    font-style: italic;
+    position: relative;
+    top: -20px;
+  }
+
+  #welcomeBanner {
+    display: inline-block;
+    vertical-align: middle;
+  
+    color: black;
+    text-align: center;
+    width: 700px;
+    height: 100px;
+    background: green;
+  }
+  
