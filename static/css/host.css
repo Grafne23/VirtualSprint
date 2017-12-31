@@ -63,7 +63,7 @@
     display: flex;
 }
 
-#playersList {
+#playersArea {
     list-style-type: none;
     background: lightgreen;
     margin: 0;

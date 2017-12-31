@@ -5,8 +5,13 @@ var time;
 var counterOn;
 var results = [0, 0, 0, 0];
 
+// Let's see if we can keep the host's users insync with the server's
+var teams = new Object();
+//{name:score}
+
 socket.on('team name', function(msg){
     console.log(msg + " has joined!");
+    teams[msg] = 0;
     $( "#playersList" ).append( "<p class='teamName'>" + msg +"</p>" );
 });
 
@@ -19,9 +24,23 @@ socket.on('scores', function(users){
         if(users[user].choice == 'B') results[1]++;
         if(users[user].choice == 'C') results[2]++;
         if(users[user].choice == 'D') results[3]++;
+
+        if(teams[user] != undefined) teams[user] = users[user].score;
     }
     displayResults();
+    updateRankings();
 });
+
+updateRankings = function() {
+    console.log("update rankings called");
+    console.log(teams);
+    $( "#playersList" ).empty();
+    teamsSorted = Object.keys(teams).sort(function(a,b){return teams[b]-teams[a]})
+    console.log(teamsSorted);
+    for(var i=0; i < teamsSorted.length; i++) {
+        $( "#playersList" ).append( "<p class='teamName'>" + teamsSorted[i] + " : " + teams[teamsSorted[i]] +"</p>" );
+    }
+}
 
 displayResults = function() {
     console.log("display results called");
