@@ -25,42 +25,7 @@ socket.on('scores', function(users){
 
 displayResults = function() {
     console.log("display results called");
-    var chart = AmCharts.makeChart("resultsSpace", {
-        "type": "serial",
-        "theme": "light",
-        "columnWidth": 1,
-        "dataProvider": [{
-          "category": "0"
-        }, {
-          "category": "A",
-          "count": 1
-        }, {
-          "category": "B",
-          "count": 4
-        }, {
-          "category": "C",
-          "count": 5
-        }, {
-          "category": "D",
-          "count": 0
-        }],
-        "graphs": [{
-          "fillColors": "#c55",
-          "fillAlphas": 0.9,
-          "lineColor": "#fff",
-          "lineAlpha": 0.7,
-          "type": "column",
-          "valueField": "count"
-        }],
-        "categoryField": "category",
-        "categoryAxis": {
-          "startOnAxis": true,
-          "title": "Results"
-        },
-        "valueAxes": [{
-          "title": "Count"
-        }]
-      });
+    
 }
 
 $('#Q1').click(function(){
