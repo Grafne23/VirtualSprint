@@ -61,25 +61,6 @@ displayResults = function() {
           "title": "Count"
         }]
       });
-    //var histogram = d3.histogram().domain(x.domain();
-  /*  var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom;
-
-    var x = d3.scaleBand().rangeRound([height, 0]);
-    var y = d3.scaleLinear().rangeRound([0, width]).padding(0.1);
-
-    var g = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    x.domain(data)*/
-    /*d3.select("#resultsSpace")
-    .selectAll("div")
-    .data(results)
-    .enter().append("div")
-    .style("width", function(d) { return x(d) + "px"; })
-    .text(function(d) { return d; });*/
 }
 
 $('#Q1').click(function(){
