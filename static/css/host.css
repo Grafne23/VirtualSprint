@@ -114,28 +114,63 @@
     padding: 10px;
 }
 
-#resultsSpace div {
-    font: 10px sans-serif;
+#resultsSpace {
     background-color: steelblue;
-    text-align: right;
-    width: 100%;
-    height: 100%;
-    padding: 3px;
-    margin: 1px;
-    color: white;
+    width: 220px;
+    height: 230px;
+    padding: 10px;
+    color: black;
+    font: bold 24px Helvetica, Sans-Serif; 
 }
-.bar rect {
-    fill: steelblue;
+#resultsSpace span {
+    position: relative;
+    width: 175px;
+    padding: 0px 15px;
+    display: flex;
+    justify-content: space-between;
+    top: -20px;
 }
-.bar text {
-    fill: #fff;
-    font: 10px sans-serif;
+
+#graphArea {
+    color: black;
+    font: bold 14px Helvetica, Sans-Serif; 
+    background-color: azure;
+    width: 200px;
+    height: 200px;
+    padding: 2px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+#Abar {
+    background-color: red;
+    width: 40px;
+    height: 40px;
+}
+#Bbar {
+    background-color: red;
+    width: 40px;
+    height: 20px;
+}
+#Cbar {
+    background-color: green;
+    width: 40px;
+    height: 160px;}
+#Dbar {
+    background-color: red;
+    width: 40px;
+    height: 1px;
+}
+.barLabel {
+    position: relative;
+    top: -30px;
+    left: 15px;
 }
 
 #footer {
     color: black;
     text-align: center;
-    width: 1000px;
+    width: 1200px;
     height: 50px;
     background: green;
 }
