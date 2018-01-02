@@ -9,7 +9,7 @@ var numUsers = 0;
 //Like a simple DB
 //{user, {choice, score}};
 var users = new Object();
-var correctAnswers = ['C', 'B', 'A', 'D', 'A', 'C'];
+var correctAnswers = ['C', 'B', 'A', 'B', 'A', 'C'];
 
 //app.set("port", PORT);
 app.use(express.static("static"));
@@ -72,7 +72,7 @@ io.on('connection', function(socket){
                 users[user].score++;
             }
         }
-        
+
         io.emit('scores', users);
 
         for(user in users) {

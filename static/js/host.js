@@ -3,8 +3,9 @@
 var socket = io();
 var time;
 var counterOn;
+var lastQ;
 var results = [0, 0, 0, 0]; //Stores the count of A-D presses for the current Q
-var correctAnswers = ['C', 'B', 'C', 'D', 'A', 'C'];
+var correctAnswers = ['C', 'B', 'C', 'B', 'A', 'C'];
 
 // Let's see if we can keep the host's users insync with the server's
 var teams = new Object();
@@ -28,7 +29,7 @@ socket.on('scores', function(users){
 
         if(teams[user] != undefined) teams[user] = users[user].score;
     }
-    displayResults();
+    displayResults(lastQ);
     updateRankings();
 });
 
@@ -43,7 +44,7 @@ updateRankings = function() {
     }
 }
 
-displayResults = function() {
+displayResults = function(num) {
     console.log("display results called");
     $('#Abar').css({
         "background-color": "yellow",
@@ -69,7 +70,7 @@ displayResults = function() {
     $('#Bbar p').text(results[1]);
     $('#Cbar p').text(results[2]);
     $('#Dbar p').text(results[3]);
-    startCounter(15, colourAnswer, 3);
+    startCounter(15, colourAnswer, num);
 }
 
 colourAnswer = function(num) {
@@ -104,6 +105,10 @@ $('#Q3').click(function(){
     showRouteChoiceQ(3);
 });
 
+$('#Q4').click(function(){
+    showRouteChoiceQ(4);
+});
+
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);
     if(num == 1)
@@ -124,6 +129,7 @@ showLines = function(num) {
 questionOver = function(num) {
     $('#QImage').hide();
     socket.emit('QF', num);
+    lastQ = num;
     $('#QImage').attr("src", "images/Q" + num + "_A.PNG");
     $('#QImage').show();
 }
