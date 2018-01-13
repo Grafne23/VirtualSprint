@@ -9,7 +9,9 @@ var numUsers = 0;
 //Like a simple DB
 //{user, {choice, score}};
 var users = new Object();
-var correctAnswers = ['C', 'B', 'A', 'B', 'A', 'C'];
+//                     1    2    3    4    5    6    7    8    9   10   11   12  
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A'];
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2];
 
 //app.set("port", PORT);
 app.use(express.static("static"));

@@ -5,7 +5,8 @@ var time;
 var counterOn;
 var lastQ;
 var results = [0, 0, 0, 0]; //Stores the count of A-D presses for the current Q
-var correctAnswers = ['C', 'B', 'C', 'B', 'A', 'C'];
+//                     1    2    3    4    5    6    7    8    9   10   11   12  
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A'];
 
 // Let's see if we can keep the host's users insync with the server's
 var teams = new Object();
@@ -74,22 +75,22 @@ displayResults = function(num) {
 clearResults = function() {
     results = [0, 0, 0, 0];
     $('#Abar').css({
-        "background-color": "yellow",
+        "background-color": "purple",
         "width": "40px",
         "height": "1px"
     });
     $('#Bbar').css({
-        "background-color": "blue",
+        "background-color": "red",
         "width": "40px",
         "height": "1px"
     });
     $('#Cbar').css({
-        "background-color": "orange",
+        "background-color": "blue",
         "width": "40px",
         "height": "1px"
     });
     $('#Dbar').css({
-        "background-color": "pink",
+        "background-color": "yellow",
         "width": "40px",
         "height": "1px"
     });
@@ -126,6 +127,11 @@ $('#Q4').click(function(){ showRouteChoiceQ(4); });
 $('#Q5').click(function(){ showRouteChoiceQ(5); });
 $('#Q6').click(function(){ showRouteChoiceQ(6); });
 $('#Q7').click(function(){ showRouteChoiceQ(7); });
+$('#Q8').click(function(){ showRouteChoiceQ(8); });
+$('#Q9').click(function(){ showRouteChoiceQ(9); });
+$('#Q10').click(function(){ showRouteChoiceQ(10); });
+$('#Q11').click(function(){ showRouteChoiceQ(11); });
+$('#Q12').click(function(){ showRouteChoiceQ(12); });
 
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);

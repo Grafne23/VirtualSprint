@@ -23,4 +23,12 @@ form button {
 
 #multipleChoiceContainer {
     display: none;
+    color: black;
+    font: 14px Helvetica, Sans-Serif; 
+}
+
+
+#questionDescription {
+    color: black;
+    font: bold 24px Helvetica, Sans-Serif; 
 }

@@ -144,21 +144,21 @@
     justify-content: space-between;
 }
 #Abar {
-    background-color: yellow;
+    background-color: purple;
     width: 40px;
     height: 1px;
 }
 #Bbar {
-    background-color: blue;
+    background-color: red;
     width: 40px;
     height: 1px;
 }
 #Cbar {
-    background-color: orange;
+    background-color: blue;
     width: 40px;
     height: 1px;}
 #Dbar {
-    background-color: pink;
+    background-color: yellow;
     width: 40px;
     height: 1px;
 }

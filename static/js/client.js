@@ -4,6 +4,10 @@ var socket = io();
 var answer;
 var teamName;
 
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2];
+var descriptions = ["Choose the SHORTEST route",
+                    "Choose the FASTEST route"];
+
 //has no effect?
 var $currentInput = $('#nameInput').focus();
 
@@ -32,6 +36,26 @@ setColoured = function(X) {
     $('#' + X).css("background-color", "green");
 }
 
+showButtons = function(num) {
+    var numberChoices = numChoices[num - 1];
+    $('#A').css("background-color", "white");
+    $('#B').css("background-color", "white");
+    $('#C').css("background-color", "white");
+    $('#D').css("background-color", "white");
+
+    $('#C').show();
+    $('#D').show();
+
+    if(numberChoices == 3) {
+        $('#D').hide();
+    } else if(numberChoices == 2) {
+        $('#D').hide();
+        $('#C').hide();
+    }
+
+    $('#multipleChoiceContainer').show();
+}
+
 $(function () {
     $('#submitName').click(function(){
         console.log("okay pressed");
@@ -46,7 +70,12 @@ $(function () {
 
 socket.on('Q', function(num){
     $('#questionNumber').text("Question Number " + num);
-    $('#multipleChoiceContainer').show();
+    if(num <= 5) {
+        $('#questionDescription').text(descriptions[0]);
+    } else {
+        $('#questionDescription').text(descriptions[1]);
+    }
+    showButtons(num);
 });
 
 socket.on('QF', function(num){
