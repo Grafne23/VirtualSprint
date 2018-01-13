@@ -29,7 +29,6 @@ socket.on('scores', function(users){
 
         if(teams[user] != undefined) teams[user] = users[user].score;
     }
-    displayResults(lastQ);
     updateRankings();
 });
 
@@ -70,7 +69,34 @@ displayResults = function(num) {
     $('#Bbar p').text(results[1]);
     $('#Cbar p').text(results[2]);
     $('#Dbar p').text(results[3]);
-    startCounter(15, colourAnswer, num);
+}
+
+clearResults = function() {
+    results = [0, 0, 0, 0];
+    $('#Abar').css({
+        "background-color": "yellow",
+        "width": "40px",
+        "height": "1px"
+    });
+    $('#Bbar').css({
+        "background-color": "blue",
+        "width": "40px",
+        "height": "1px"
+    });
+    $('#Cbar').css({
+        "background-color": "orange",
+        "width": "40px",
+        "height": "1px"
+    });
+    $('#Dbar').css({
+        "background-color": "pink",
+        "width": "40px",
+        "height": "1px"
+    });
+    $('#Abar p').text("0");
+    $('#Bbar p').text("0");
+    $('#Cbar p').text("0");
+    $('#Dbar p').text("0");
 }
 
 colourAnswer = function(num) {
@@ -93,24 +119,17 @@ colourAnswer = function(num) {
     });
 }
 
-$('#Q1').click(function(){
-    showRouteChoiceQ(1);
-});
-
-$('#Q2').click(function(){
-    showRouteChoiceQ(2);
-});
-
-$('#Q3').click(function(){
-    showRouteChoiceQ(3);
-});
-
-$('#Q4').click(function(){
-    showRouteChoiceQ(4);
-});
+$('#Q1').click(function(){ showRouteChoiceQ(1); });
+$('#Q2').click(function(){ showRouteChoiceQ(2); });
+$('#Q3').click(function(){ showRouteChoiceQ(3); });
+$('#Q4').click(function(){ showRouteChoiceQ(4); });
+$('#Q5').click(function(){ showRouteChoiceQ(5); });
+$('#Q6').click(function(){ showRouteChoiceQ(6); });
+$('#Q7').click(function(){ showRouteChoiceQ(7); });
 
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);
+    clearResults();
     if(num == 1)
         $('#QImage').attr("src", "images/Q" + num + "_B.jpg");
     else
@@ -123,15 +142,30 @@ showRouteChoiceQ = function(num) {
 
 showLines = function(num) {
     $('#QImage').attr("src", "images/Q" + num + "_L.PNG");
-    startCounter(10, questionOver, num);
+    startCounter(15, questionOver, num);
+}
+
+setAnswerButton = function(num) {
+    $('#showAnswer').click(function(){
+        console.log("pressed Answer!");
+        colourAnswer(num);
+        $('#QImage').attr("src", "images/Q" + num + "_A.PNG");
+        $('#QImage').show();
+    });
+}
+
+setResultsButton = function(num) {
+    $('#showResults').click(function(){
+        console.log("pressed Results!");
+        displayResults(num);
+    });
 }
 
 questionOver = function(num) {
-    $('#QImage').hide();
     socket.emit('QF', num);
     lastQ = num;
-    $('#QImage').attr("src", "images/Q" + num + "_A.PNG");
-    $('#QImage').show();
+    setResultsButton(num);
+    setAnswerButton(num);
 }
 
 startCounter = function(t, callback, num) {

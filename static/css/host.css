@@ -48,6 +48,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    background: lightgrey;
 }
 
 #top {
@@ -87,19 +88,17 @@
 }
 #questionSpace {
     display: flex;
-    flex-basis: 85%;
     flex-wrap: wrap;
     justify-content: space-around;
-    background: lightgrey;
 }
 #QImage {
-    width: 900px;
-    height: 900px;
+    width: 800px;
+    height: 800px;
 }
 #counter {
     position: relative;
-    bottom: 905px;
-    left: 865px;
+    bottom: 805px;
+    left: 710px;
     width: 100%;
 }
 #counterText {
@@ -116,8 +115,10 @@
 
 #resultsSpace {
     background-color: steelblue;
+    position: relative;
+    top: 520px;
     width: 220px;
-    height: 230px;
+    height: 260px;
     padding: 10px;
     color: black;
     font: bold 24px Helvetica, Sans-Serif; 
@@ -143,21 +144,21 @@
     justify-content: space-between;
 }
 #Abar {
-    background-color: red;
+    background-color: yellow;
     width: 40px;
-    height: 40px;
+    height: 1px;
 }
 #Bbar {
-    background-color: red;
+    background-color: blue;
     width: 40px;
-    height: 20px;
+    height: 1px;
 }
 #Cbar {
-    background-color: green;
+    background-color: orange;
     width: 40px;
-    height: 160px;}
+    height: 1px;}
 #Dbar {
-    background-color: red;
+    background-color: pink;
     width: 40px;
     height: 1px;
 }
