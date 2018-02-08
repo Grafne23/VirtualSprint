@@ -6,7 +6,7 @@ var counterOn;
 var lastQ;
 var results = [0, 0, 0, 0]; //Stores the count of A-D presses for the current Q
 //                     1    2    3    4    5    6    7    8    9   10   11   12  
-var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A'];
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D'];
 
 // Let's see if we can keep the host's users insync with the server's
 var teams = new Object();
@@ -14,8 +14,11 @@ var teams = new Object();
 
 socket.on('team name', function(msg){
     console.log(msg + " has joined!");
-    teams[msg] = 0;
-    $( "#playersList" ).append( "<p class='teamName'>" + msg +"</p>" );
+    console.log(teams);
+    if(teams[msg] == undefined) {
+        teams[msg] = 0;
+        $( "#playersList" ).append( "<p class='teamName'>" + msg +"</p>" );
+    }
 });
 
 socket.on('scores', function(users){
@@ -132,18 +135,27 @@ $('#Q9').click(function(){ showRouteChoiceQ(9); });
 $('#Q10').click(function(){ showRouteChoiceQ(10); });
 $('#Q11').click(function(){ showRouteChoiceQ(11); });
 $('#Q12').click(function(){ showRouteChoiceQ(12); });
+$('#Q13').click(function(){ showAuxQ(13); });
+$('#Q14').click(function(){ showAuxQ(14); });
 
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);
     clearResults();
-    if(num == 1)
-        $('#QImage').attr("src", "images/Q" + num + "_B.jpg");
-    else
-        $('#QImage').attr("src", "images/Q" + num + "_B.png");
+    $('#QImage').attr("src", "images/Q" + num + "_B.png");
     $('#QImage').show();
     $('#Q' + num).css("background-color", "green");
 
     startCounter(15, showLines, num);
+}
+
+showAuxQ = function(num) {
+    socket.emit('Q', num);
+    clearResults();
+    $('#QImage').attr("src", "images/Q" + num + "_B.png");
+    $('#QImage').show();
+    $('#Q' + num).css("background-color", "green");
+
+    startCounter(30, questionOver, num);
 }
 
 showLines = function(num) {

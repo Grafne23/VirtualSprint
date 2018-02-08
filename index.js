@@ -10,8 +10,8 @@ var numUsers = 0;
 //{user, {choice, score}};
 var users = new Object();
 //                     1    2    3    4    5    6    7    8    9   10   11   12  
-var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A'];
-var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2];
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D'];
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4];
 
 //app.set("port", PORT);
 app.use(express.static("static"));
@@ -39,6 +39,7 @@ io.on('connection', function(socket){
     var addedUser = false;
     socket.on('disconnect', function(){
         console.log('user disconnected');
+        console.log(users);
     });
     socket.on('choice', function(msg) {
         console.log(socket.username + " chose " + msg);
@@ -54,6 +55,17 @@ io.on('connection', function(socket){
         ++numUsers;
         addedUser = true;
         console.log('name selected: ' + name);
+        io.emit('team name', name);
+    });
+    socket.on('team name recon', function(name) {
+        // we store the username in the socket session for this client
+        socket.username = name;
+        if(!users[name]) {
+            users[name] = {choice:'X', score:0};
+            ++numUsers;
+            addedUser = true;
+        }
+        console.log('name reselected: ' + name);
         io.emit('team name', name);
     });
     socket.on('Q', function(num) {

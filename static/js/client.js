@@ -2,11 +2,13 @@
 
 var socket = io();
 var answer;
-var teamName;
+var teamName = localStorage.getItem("teamName");
 
-var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2];
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2, 4, 4];
 var descriptions = ["Choose the SHORTEST route",
-                    "Choose the FASTEST route"];
+                    "Choose the FASTEST route",
+                    "Choose the passable feature",
+                    "Choose the location"];
 
 //has no effect?
 var $currentInput = $('#nameInput').focus();
@@ -60,6 +62,7 @@ $(function () {
     $('#submitName').click(function(){
         console.log("okay pressed");
         var name = $('#name').val();
+        localStorage.setItem("teamName",name);
         socket.emit('team name', name);
         $('#title').text("Hello there " + name + "!");
         $('#nameInput').hide();
@@ -72,9 +75,13 @@ socket.on('Q', function(num){
     $('#questionNumber').text("Question Number " + num);
     if(num <= 5) {
         $('#questionDescription').text(descriptions[0]);
-    } else {
+    } else if(num <= 12) {
         $('#questionDescription').text(descriptions[1]);
-    }
+    }  else if(num == 13) {
+        $('#questionDescription').text(descriptions[2]);
+    }  else if(num == 14) {
+        $('#questionDescription').text(descriptions[3]);
+    } 
     showButtons(num);
 });
 
@@ -83,12 +90,11 @@ socket.on('QF', function(num){
     $('#multipleChoiceContainer').hide();
 });
 
-socket.on('reconnect', function () {
-    console.log('you have been reconnected');
+socket.on('connect', function() {
+    console.log('you have connected');
     if (teamName) {
-        socket.emit('team name', teamName);
+        socket.emit('team name recon', teamName);
+        $('#title').text("Hello there " + teamName + "!");
+        $('#nameInput').hide();
     }
 });
-
-
-console.log("helllllloooo");
