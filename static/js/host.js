@@ -145,7 +145,12 @@ showRouteChoiceQ = function(num) {
     $('#QImage').show();
     $('#Q' + num).css("background-color", "green");
 
-    startCounter(15, showLines, num);
+    //startCounter(15, showLines, num);
+    $('#showChoices').off();
+    $('#showChoices').click(function(){
+        console.log("pressed Choices!");
+        showLines(num);
+    });
 }
 
 showAuxQ = function(num) {
@@ -164,6 +169,7 @@ showLines = function(num) {
 }
 
 setAnswerButton = function(num) {
+    $('#showAnswer').off();
     $('#showAnswer').click(function(){
         console.log("pressed Answer!");
         colourAnswer(num);
@@ -173,6 +179,7 @@ setAnswerButton = function(num) {
 }
 
 setResultsButton = function(num) {
+    $('#showResults').off();
     $('#showResults').click(function(){
         console.log("pressed Results!");
         displayResults(num);
