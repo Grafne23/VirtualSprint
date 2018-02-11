@@ -138,6 +138,7 @@ $('#Q12').click(function(){ showRouteChoiceQ(12); });
 $('#Q13').click(function(){ showAuxQ(13); });
 $('#Q14').click(function(){ showAuxQ(14); });
 
+
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);
     clearResults();
