@@ -1,9 +1,10 @@
 const express = require('express');
-const http = require('http');
+const app = express();
+const server = require('http').createServer(app);
 const path    = require("path");
-let PORT = 5000;
 
-var app = express();
+const PORT = 8080;
+
 var numUsers = 0;
 
 //Like a simple DB
@@ -18,11 +19,11 @@ app.use(express.static("static"));
 app.use(express.json());
 //app.use(express.urlencoded());
 
-var httpServer = http.createServer(app);
-httpServer.listen(PORT, function() {
+//var httpServer = http.createServer(app);
+//httpServer.listen(PORT, function() {
     // Print out our actual IP Address so they know what to tell their friends :D
     // console.log("Listening on " + host_url);
-});
+//});
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname+'/static/client.html'));
@@ -32,7 +33,9 @@ app.get("/host/", function(req, res) {
     res.sendFile(path.join(__dirname+'/static/host.html'));
 });
 
-io = require('socket.io')(httpServer);
+server.listen(PORT);
+
+io = require('socket.io')(server);
 
 io.on('connection', function(socket){
     console.log('a user connected');
