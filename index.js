@@ -31,7 +31,7 @@ app.get("/host/", function(req, res) {
     res.sendFile(path.join(__dirname+'/static/host.html'));
 });
 
-server.listen(process.env.PORT || 8008));
+server.listen(process.env.PORT || 8008);
 
 io = require('socket.io')(server);
 
