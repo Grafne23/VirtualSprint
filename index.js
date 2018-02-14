@@ -3,7 +3,7 @@ const app = express();
 const server = require('http').createServer(app);
 const path    = require("path");
 
-const PORT = 8080;
+const PORT = 8000;
 
 var numUsers = 0;
 
