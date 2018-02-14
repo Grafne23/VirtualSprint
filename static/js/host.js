@@ -142,7 +142,7 @@ $('#Q14').click(function(){ showAuxQ(14); });
 showRouteChoiceQ = function(num) {
     socket.emit('Q', num);
     clearResults();
-    $('#QImage').attr("src", "../images/Q" + num + "_B.png");
+    $('#QImage').attr("src", "images/Q" + num + "_B.png");
     $('#QImage').show();
     $('#Q' + num).css("background-color", "green");
 
@@ -157,7 +157,7 @@ showRouteChoiceQ = function(num) {
 showAuxQ = function(num) {
     socket.emit('Q', num);
     clearResults();
-    $('#QImage').attr("src", "../images/Q" + num + "_B.png");
+    $('#QImage').attr("src", "static/images/Q" + num + "_B.png");
     $('#QImage').show();
     $('#Q' + num).css("background-color", "green");
 
@@ -165,7 +165,7 @@ showAuxQ = function(num) {
 }
 
 showLines = function(num) {
-    $('#QImage').attr("src", "../images/Q" + num + "_L.PNG");
+    $('#QImage').attr("src", "images/Q" + num + "_L.PNG");
     $('#QImage').show();
     startCounter(15, questionOver, num);
 }
