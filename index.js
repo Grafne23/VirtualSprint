@@ -3,8 +3,6 @@ const app = express();
 const server = require('http').createServer(app);
 const path    = require("path");
 
-const PORT = 8008;
-
 var numUsers = 0;
 
 //Like a simple DB
@@ -33,7 +31,7 @@ app.get("/host/", function(req, res) {
     res.sendFile(path.join(__dirname+'/static/host.html'));
 });
 
-server.listen(PORT);
+server.listen(process.env.PORT || 8008));
 
 io = require('socket.io')(server);
 
