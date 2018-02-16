@@ -110,5 +110,6 @@ socket.on('connect', function() {
         socket.emit('team name recon', teamName);
         $('#title').text("Hello there " + teamName + "!");
         $('#nameInput').hide();
+        showButtons(4);
     }
 });

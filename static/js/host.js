@@ -52,22 +52,22 @@ displayResults = function(num) {
     $('#Abar').css({
         "background-color": "yellow",
         "width": "40px",
-        "height": (results[0] * 20 + 1) + "px"
+        "height": (results[0] * 10 + 1) + "px"
     });
     $('#Bbar').css({
         "background-color": "blue",
         "width": "40px",
-        "height": (results[1] * 20 + 1) + "px"
+        "height": (results[1] * 10 + 1) + "px"
     });
     $('#Cbar').css({
         "background-color": "orange",
         "width": "40px",
-        "height": (results[2] * 20 + 1) + "px"
+        "height": (results[2] * 10 + 1) + "px"
     });
     $('#Dbar').css({
         "background-color": "pink",
         "width": "40px",
-        "height": (results[3] * 20 + 1) + "px"
+        "height": (results[3] * 10 + 1) + "px"
     });
     $('#Abar p').text(results[0]);
     $('#Bbar p').text(results[1]);
@@ -187,6 +187,7 @@ setAnswerButton = function(num) {
     $('#showAnswer').off();
     $('#showAnswer').click(function(){
         console.log("pressed Answer!");
+        displayResults(num);
         colourAnswer(num);
         $('#QImage').attr("src", "images/Q" + num + "_A.png");
         $('#QImage').show();

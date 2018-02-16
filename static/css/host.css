@@ -69,13 +69,13 @@
     background: lightcyan;
     margin: 0;
     padding: 0;
-    flex-basis: 15%;
+    flex-basis: 20%;
 }
 #teamsHeader {
     display: flex;
     text-decoration: underline;
     font: bold 18px Helvetica, Sans-Serif; 
-    padding: 2px 5px;
+    padding: 5px 5px;
     margin: 0px 25px;
     width: auto;
     height: 20px;
@@ -83,8 +83,8 @@
 .teamName {
     display: flex;
     padding: 0px 5px;
-    font: bold 18px Helvetica, Sans-Serif; 
-    margin: 20px 0;
+    font: bold 16px Helvetica, Sans-Serif; 
+    margin: 10px 0;
     width: auto;
     height: 30px;
 }
