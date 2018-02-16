@@ -5,8 +5,8 @@ var time;
 var counterOn;
 var lastQ;
 var results = [0, 0, 0, 0]; //Stores the count of A-D presses for the current Q
-//                     1    2    3    4    5    6    7    8    9   10   11   12  
-var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D'];
+//                     1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D', 'C', 'A', 'B', 'C'];
 
 // Let's see if we can keep the host's users insync with the server's
 var teams = new Object();
@@ -137,6 +137,10 @@ $('#Q11').click(function(){ showRouteChoiceQ(11); });
 $('#Q12').click(function(){ showRouteChoiceQ(12); });
 $('#Q13').click(function(){ showAuxQ(13); });
 $('#Q14').click(function(){ showAuxQ(14); });
+$('#Q15').click(function(){ showAuxQ(15); });
+$('#Q16').click(function(){ showAuxQ(16); });
+$('#Q17').click(function(){ showAuxQ(17); });
+$('#Q18').click(function(){ showAuxQ(18); });
 
 
 showRouteChoiceQ = function(num) {
@@ -148,6 +152,8 @@ showRouteChoiceQ = function(num) {
 
     //startCounter(15, showLines, num);
     $('#showChoices').off();
+    $('#showChoices').attr("disabled", false);
+    $('#closePoll').hide();
     $('#showChoices').click(function(){
         console.log("pressed Choices!");
         showLines(num);
@@ -161,13 +167,20 @@ showAuxQ = function(num) {
     $('#QImage').show();
     $('#Q' + num).css("background-color", "green");
 
-    startCounter(30, questionOver, num);
+    //startCounter(30, questionOver, num);
+    $('#closePoll').off();
+    $('#closePoll').show();
+    $('#closePoll').click(function(){
+        questionOver(num)
+    });
+
 }
 
 showLines = function(num) {
     $('#QImage').attr("src", "images/Q" + num + "_L.png");
     $('#QImage').show();
     startCounter(15, questionOver, num);
+    $('#showChoices').attr("disabled", true);
 }
 
 setAnswerButton = function(num) {

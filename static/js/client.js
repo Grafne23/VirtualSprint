@@ -4,11 +4,17 @@ var socket = io();
 var answer;
 var teamName = localStorage.getItem("teamName");
 
-var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2, 4, 4];
+//                     1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4,   4,   4,   4,   4];
+
 var descriptions = ["Choose the SHORTEST route",
                     "Choose the FASTEST route",
                     "Choose the passable feature",
-                    "Choose the location"];
+                    "Choose the location",
+                    "Which map had most Sprint Camps?",
+                    "Whose won the most Sprint Camps?",
+                    "When was Sprint Camp not in Van?",
+                    "How many maps did we print?"];
 
 //has no effect?
 var $currentInput = $('#nameInput').focus();
@@ -81,6 +87,14 @@ socket.on('Q', function(num){
         $('#questionDescription').text(descriptions[2]);
     }  else if(num == 14) {
         $('#questionDescription').text(descriptions[3]);
+    } else if(num == 15) {
+        $('#questionDescription').text(descriptions[4]);
+    } else if(num == 16) {
+        $('#questionDescription').text(descriptions[5]);
+    } else if(num == 17) {
+        $('#questionDescription').text(descriptions[6]);
+    } else if(num == 18) {
+        $('#questionDescription').text(descriptions[7]);
     } 
     showButtons(num);
 });
