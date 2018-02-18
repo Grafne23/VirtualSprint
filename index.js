@@ -9,8 +9,8 @@ var numUsers = 0;
 //{user, {choice, score}};
 var users = new Object();
 //                     1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
-var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D', 'C', 'A', 'B', 'C'];
-var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4,   4,   4,   4,   4];
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D', 'C', 'A', 'B', 'C', 'D'];
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4,   4,   4,   4,   4,   4];
 
 //app.set("port", PORT);
 app.use(express.static("static"));

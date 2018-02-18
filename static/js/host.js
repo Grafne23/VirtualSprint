@@ -6,7 +6,7 @@ var counterOn;
 var lastQ;
 var results = [0, 0, 0, 0]; //Stores the count of A-D presses for the current Q
 //                     1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
-var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D', 'C', 'A', 'B', 'C'];
+var correctAnswers = ['B', 'A', 'C', 'C', 'B', 'A', 'D', 'B', 'B', 'C', 'B', 'A', 'D', 'D', 'C', 'A', 'B', 'C', ' D'];
 
 // Let's see if we can keep the host's users insync with the server's
 var teams = new Object();

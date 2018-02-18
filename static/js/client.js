@@ -5,7 +5,7 @@ var answer;
 var teamName = localStorage.getItem("teamName");
 
 //                     1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
-var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4,   4,   4,   4,   4];
+var numChoices     = [ 3,   3,   3,   4,   3,   3,   4,   4,   4,   3,   4,   2,   4,   4,   4,   4,   4,   4,  4];
 
 var descriptions = ["Choose the SHORTEST route",
                     "Choose the FASTEST route",
