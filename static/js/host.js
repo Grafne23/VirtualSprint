@@ -141,6 +141,7 @@ $('#Q15').click(function(){ showAuxQ(15); });
 $('#Q16').click(function(){ showAuxQ(16); });
 $('#Q17').click(function(){ showAuxQ(17); });
 $('#Q18').click(function(){ showAuxQ(18); });
+$('#Q19').click(function(){ showAuxQ(19); });
 
 
 showRouteChoiceQ = function(num) {
